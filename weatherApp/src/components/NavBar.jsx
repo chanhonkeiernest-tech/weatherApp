@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useLocation } from "../context/LocationContext";
 import ToggleDegree from "./ToggleDegree";
@@ -15,8 +15,9 @@ const NavBar = () => {
   return (
     <nav className="navbar">
       <NavLink to="/">Now</NavLink>
-      <NavLink to="/future">Future</NavLink>
-      <form onSubmit={handleSubmit}>
+
+      <NavLink to="/future"> Future</NavLink>
+      {/* <form onSubmit={handleSubmit}>
         <label htmlFor="location-search">Location</label>
         <input
           id="location-search"
@@ -25,7 +26,7 @@ const NavBar = () => {
           placeholder="Search a city"
         />
         <button type="submit">Search</button>
-      </form>
+      </form> */}
       <ToggleDegree />
     </nav>
   );

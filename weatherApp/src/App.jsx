@@ -1,4 +1,4 @@
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import { DegreeProvider } from "./context/DegreeContext";
 import { LocationProvider } from "./context/LocationContext";
