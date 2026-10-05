@@ -1,9 +1,9 @@
 import { useLocation } from "../context/LocationContext";
 import { useDegree } from "../context/DegreeContext";
 import useFetch from "../hooks/useFetch";
-import WeatherCard from "./WeatherCard";
+import WeatherCardList from "./WeatherCardList";
 
-const WeatherToday = () => {
+const WeatherFuture = () => {
   const { location } = useLocation();
   const { degree } = useDegree();
   const geocodingUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
@@ -14,7 +14,7 @@ const WeatherToday = () => {
   const place = places?.results?.[0];
   const temperatureUnit = degree === "C" ? "celsius" : "fahrenheit";
   const forecastUrl = place
-    ? `https://api.open-meteo.com/v1/forecast?latitude=${place.latitude}&longitude=${place.longitude}&current=weather_code,temperature_2m,relative_humidity_2m,wind_speed_10m&temperature_unit=${temperatureUnit}&wind_speed_unit=kmh`
+    ? `https://api.open-meteo.com/v1/forecast?latitude=${place.latitude}&longitude=${place.longitude}&daily=weather_code,temperature_2m_max,relative_humidity_2m_mean,wind_speed_10m_mean&temperature_unit=${temperatureUnit}&wind_speed_unit=kmh`
     : null;
   const { data, isLoading, error } = useFetch(forecastUrl);
 
@@ -25,9 +25,9 @@ const WeatherToday = () => {
 
   return (
     <div className="weather-data">
-      <WeatherCard data={data} location={place.name} />
+      <WeatherCardList data={data} location={place.name} />
     </div>
   );
 };
 
-export default WeatherToday;
+export default WeatherFuture;

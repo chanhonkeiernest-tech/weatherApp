@@ -23,7 +23,7 @@ export const DegreeProvider = ({ children }) => {
 export const useDegree = () => {
   const context = useContext(DegreeContext);
   if (context === undefined) {
-    throw new Error("useTheme must be used within a DegreeProvider");
+    throw new Error("UseDegree must be used within a DegreeProvider");
   }
   return context;
 };

@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { useLocation } from "../context/LocationContext";
-import WeatherToday from "../components/WeatherToday";
+import WeatherFuture from "../components/WeatherFuture";
 
-const Now = () => {
-  const { location, changeLocation } = useLocation();
-  const [inputLocation, setInputLocation] = useState(location);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    changeLocation(inputLocation);
-  };
-
+const Future = () => {
+    const { location, changeLocation } = useLocation();
+    const [inputLocation, setInputLocation] = useState(location);
+    
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        changeLocation(inputLocation);
+    
+    
+  
+      
+    };
   return (
     <div className="home">
-      <h1>Today's weather</h1>
+      <h1>Future weather</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="location">Location</label>
         <input
@@ -24,9 +27,9 @@ const Now = () => {
         />
         <button type="submit">Update location</button>
       </form>
-      <WeatherToday />
+      <WeatherFuture />
     </div>
   );
 };
 
-export default Now;
+export default Future;
